@@ -146,24 +146,24 @@
     <span class="eyebrow">ECCV 2026 &middot; SBM Paper</span>
     <h1>Benchmark Metric Explainers</h1>
     <p class="lead">
-      The SBM benchmark evaluates generated room layouts on three complementary axes: whether the right inventory is present, whether a person can reach it, and whether the geometry is physically plausible. Each explainer walks through one metric with interactive examples.
+      The SBM benchmark evaluates generated room layouts on three complementary axes: <em>what was placed</em>, <em>whether it can actually be used</em>, and <em>whether it physically fits</em>. The explainers are designed to be read in order. Each one builds on concepts introduced in the previous.
     </p>
 
     <div class="cards">
       <a class="card coverage" href="coverage_explainer/index.html">
         <div class="card-header">
-          <h2>Coverage</h2>
+          <h2>1. Coverage</h2>
           <span class="formula">100 &times; (&Sigma; w&#8342;s&#8342; / &Sigma; w&#8342; &minus; p<sub>extra</sub>)</span>
         </div>
         <p class="description">
           Did the method furnish the room with the right inventory? Coverage measures whether required items are present in the right quantities, weighted by importance, with a mild penalty for hallucinated extras. It is deliberately not a geometry metric.
         </p>
-        <span class="arrow">Read the explainer &rarr;</span>
+        <span class="arrow">Start here &rarr;</span>
       </a>
 
       <a class="card navigability" href="navigability_explainer/index.html">
         <div class="card-header">
-          <h2>Navigability</h2>
+          <h2>2. Navigability</h2>
           <span class="formula">100 &times; (SR &minus; 0.35 &times; DF)</span>
         </div>
         <p class="description">
@@ -174,7 +174,7 @@
 
       <a class="card oc" href="overlap_clearance_explainer/index.html">
         <div class="card-header">
-          <h2>Overlap &amp; Clearance</h2>
+          <h2>3. Overlap &amp; Clearance</h2>
           <span class="formula">0.5 &times; EOF + 0.2 &times; GOA + 0.3 &times; DCI</span>
         </div>
         <p class="description">
