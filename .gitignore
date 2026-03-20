@@ -4,3 +4,7 @@ coverage_navigability_explainer/
 __pycache__/
 *.pyc
 .DS_Store
+navigability_explainer/frontier_metrics_before/
+navigability_explainer/portal_comparison_output/
+navigability_explainer/portal_comparison_output_test/
+navigability_explainer/frontier_nav_portal_delta.*
