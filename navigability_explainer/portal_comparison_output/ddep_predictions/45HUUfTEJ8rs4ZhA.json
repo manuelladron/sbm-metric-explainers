@@ -1,0 +1,33 @@
+{
+  "version": "0.1",
+  "method": "ddep",
+  "input_room_id": "45HUUfTEJ8rs4ZhA",
+  "room_type": "OFFICE",
+  "entities": [
+    {
+      "category": "Desk",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.5,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 62.0,
+      "height": null,
+      "depth": 55.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Office_Desk_1Cabinet_01",
+        "originalAssetId": 844,
+        "repAssetId": 844,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    }
+  ],
+  "metadata": {
+    "num_entities_predicted": 1,
+    "ddep_format": true
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "version": "0.1",
+  "method": "ddep",
+  "input_room_id": "b7dLo58Uq5uoHIVI",
+  "room_type": "KITCHEN",
+  "entities": [
+    {
+      "category": "Sink36",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.5,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 36.0,
+      "height": null,
+      "depth": 23.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Kitchen_Sink36_Double_01",
+        "originalAssetId": 772,
+        "repAssetId": 771,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Oven30",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.6030000000000001,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 30.0,
+      "height": null,
+      "depth": 26.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Oven30",
+        "originalAssetId": 761,
+        "repAssetId": 761,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Fridge35",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.9037721324095458,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 35.0,
+      "height": null,
+      "depth": 31.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Kitchen_Fridge35_01",
+        "originalAssetId": 740,
+        "repAssetId": 1604,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "countertop_island",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.5879829899552753,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 90.0,
+      "width": 55.0,
+      "height": 0.0,
+      "depth": 72.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "countertop_island",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "base_cabinet_island",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.5174133000953149,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 90.0,
+      "width": 35.75,
+      "height": 0.0,
+      "depth": 71.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "baseCabinet",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "SinkSingle",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.5879829899552753,
+      "lateral_offset": 36.0,
+      "position": null,
+      "rotation": 90.0,
+      "width": 36.0,
+      "height": null,
+      "depth": 23.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "sinksingle",
+        "originalAssetId": 769,
+        "repAssetId": 769,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "stoolback",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.8482660019062982,
+      "lateral_offset": 12.0,
+      "position": null,
+      "rotation": 90.0,
+      "width": 36.0,
+      "height": null,
+      "depth": 23.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "stoolback",
+        "originalAssetId": 238,
+        "repAssetId": 238,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "stoolback",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.8482660019062982,
+      "lateral_offset": 36.0,
+      "position": null,
+      "rotation": 90.0,
+      "width": 36.0,
+      "height": null,
+      "depth": 23.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "stoolback",
+        "originalAssetId": 238,
+        "repAssetId": 238,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "stoolback",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.8482660019062982,
+      "lateral_offset": 60.0,
+      "position": null,
+      "rotation": 90.0,
+      "width": 36.0,
+      "height": null,
+      "depth": 23.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "stoolback",
+        "originalAssetId": 238,
+        "repAssetId": 238,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Dishwasher",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.23971698804897718,
+      "lateral_offset": 1.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 24.0,
+      "height": null,
+      "depth": 27.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "dishwasher",
+        "originalAssetId": 737,
+        "repAssetId": 737,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "base_cabinet",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.746512647091169,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 21.198419999999988,
+      "height": 0.0,
+      "depth": 24.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "baseCabinet",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": 0.6854810293632465,
+        "placementEnd": 0.8075442648190916
+      }
+    },
+    {
+      "category": "countertop",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.746512647091169,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 21.198419999999988,
+      "height": 0.0,
+      "depth": 24.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "countertop",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": 0.6854810293632465,
+        "placementEnd": 0.8075442648190916
+      }
+    },
+    {
+      "category": "base_cabinet",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.3801297426591884,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 136.11721999999997,
+      "height": 0.0,
+      "depth": 24.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "baseCabinet",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": 0.001,
+        "placementEnd": 0.17
+      }
+    },
+    {
+      "category": "countertop",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.3801297426591884,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 136.11721999999997,
+      "height": 0.0,
+      "depth": 24.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "countertop",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": 0.001,
+        "placementEnd": 0.17
+      }
+    },
+    {
+      "category": "base_cabinet",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.4302594853183769,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 32.82918000000002,
+      "height": 0.0,
+      "depth": 24.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "baseCabinet",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": 0.34,
+        "placementEnd": 0.5205189706367537
+      }
+    },
+    {
+      "category": "countertop",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.4302594853183769,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 32.82918000000002,
+      "height": 0.0,
+      "depth": 24.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "countertop",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": 0.34,
+        "placementEnd": 0.5205189706367537
+      }
+    },
+    {
+      "category": "upper_cabinet",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.5737721324095458,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 85.02759999999999,
+      "height": 0.0,
+      "depth": 24.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "upper_cabinet",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": 0.34,
+        "placementEnd": 0.8075442648190916
+      }
+    },
+    {
+      "category": "upper_cabinet",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.2925,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 136.11721999999997,
+      "height": 0.0,
+      "depth": 24.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "upper_cabinet",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": 0.001,
+        "placementEnd": 0.17
+      }
+    },
+    {
+      "category": "fridge_cabinet",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.9037721324095458,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 35.00000000000001,
+      "height": 0.0,
+      "depth": 30.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "fridge_cabinet",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": 0.8075442648190916,
+        "placementEnd": 1.0
+      }
+    }
+  ],
+  "metadata": {
+    "num_entities_predicted": 19,
+    "ddep_format": true
+  }
+}

@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coverage: A Benchmark Explainer</title>
+  <style>
+    :root {
+      --paper: #f6f1e8;
+      --panel: #fffdfc;
+      --ink: #131313;
+      --muted: #66615b;
+      --line: #d8d0c4;
+      --coverage: #b86a3c;
+      --coverage-soft: #f2dec6;
+      --accent: #1d6f72;
+      --shadow: 0 20px 42px rgba(17, 17, 17, 0.08);
+      --radius: 22px;
+      --content: 780px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 106, 60, 0.11), transparent 25rem),
+        radial-gradient(circle at top right, rgba(29, 111, 114, 0.07), transparent 25rem),
+        var(--paper);
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      line-height: 1.72;
+    }
+    main {
+      width: min(100%, calc(var(--content) + 3rem));
+      margin: 0 auto;
+      padding: 3.7rem 1.5rem 5rem;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 0.9rem;
+      color: var(--coverage);
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      margin: 0 0 1rem;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4.9rem);
+      max-width: 12ch;
+    }
+    h2 {
+      margin-top: 3.4rem;
+      font-size: clamp(1.85rem, 3vw, 2.45rem);
+    }
+    h3 { font-size: 1.18rem; }
+    p, li { font-size: 1.08rem; }
+    .lead {
+      margin-top: 1.2rem;
+      max-width: 42rem;
+      font-size: 1.28rem;
+      line-height: 1.62;
+    }
+    .formula-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.6rem;
+      padding: 0.95rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid rgba(19, 19, 19, 0.08);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.98rem;
+    }
+    .formula-chip strong { color: var(--coverage); }
+    .note {
+      margin-top: 1.35rem;
+      max-width: 43rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--coverage);
+      color: var(--muted);
+    }
+    figure {
+      margin: 2rem 0 0;
+      padding: 1.05rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(19, 19, 19, 0.08);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+    figure img {
+      display: block;
+      width: 100%;
+      border-radius: 16px;
+      background: var(--panel);
+    }
+    figcaption {
+      margin-top: 0.9rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .equation {
+      margin: 1.35rem 0;
+      padding: 1rem 1.15rem;
+      border-radius: 16px;
+      border: 1px solid rgba(19, 19, 19, 0.08);
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow);
+      font-size: 1.04rem;
+      overflow-x: auto;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .card {
+      padding: 1.12rem 1.05rem;
+      border-radius: 18px;
+      border: 1px solid rgba(19, 19, 19, 0.08);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+    .card p {
+      margin: 0.45rem 0 0;
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+    .calc {
+      margin-top: 1.8rem;
+      padding: 1.35rem;
+      border-radius: 24px;
+      border: 1px solid rgba(19, 19, 19, 0.08);
+      background:
+        linear-gradient(145deg, rgba(184, 106, 60, 0.09), transparent 45%),
+        linear-gradient(145deg, rgba(29, 111, 114, 0.05), transparent 62%),
+        rgba(255, 255, 255, 0.76);
+      box-shadow: var(--shadow);
+    }
+    .calc h3 {
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      margin-bottom: 0.3rem;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem 1.15rem;
+      margin-top: 1rem;
+    }
+    .field {
+      display: grid;
+      gap: 0.35rem;
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+    }
+    .field label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--coverage);
+    }
+    .result {
+      margin-top: 1rem;
+      padding: 1rem 1.05rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(19, 19, 19, 0.08);
+    }
+    .result strong {
+      display: inline-block;
+      min-width: 7ch;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--coverage);
+    }
+    .result p {
+      margin: 0.55rem 0 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .footer-note {
+      margin-top: 3.2rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    @media (max-width: 860px) {
+      .grid-2, .cards, .calc-grid { grid-template-columns: 1fr; }
+      main { padding-top: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav style="
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    background: rgba(246, 241, 232, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(19,19,19,0.06);
+    font-family: 'Avenir Next','Helvetica Neue',Helvetica,sans-serif;
+    font-size: 0.82rem; font-weight: 600;
+  ">
+    <a href="../index.html" style="color:#131313; text-decoration:none; letter-spacing:0.04em;">All Metrics</a>
+    <span style="color:#d8d0c4;">/</span>
+    <span style="color:#2d7d4f;">Coverage</span>
+    <span style="color:#d8d0c4;">|</span>
+    <a href="../navigability_explainer/index.html" style="color:#66615b; text-decoration:none;">Navigability</a>
+    <span style="color:#d8d0c4;">|</span>
+    <a href="../overlap_clearance_explainer/index.html" style="color:#66615b; text-decoration:none;">Overlap &amp; Clearance</a>
+  </nav>
+  <main>
+    <section>
+      <span class="eyebrow">Benchmark Metric</span>
+      <h1>Coverage</h1>
+      <p class="lead">
+        Coverage asks a blunt but important question: did the method furnish the room with the right inventory?
+        It is deliberately not a geometry metric. It does not care whether the bed is centered perfectly or whether a sink is three inches farther left.
+        It cares whether the room program is there.
+      </p>
+      <div class="formula-chip"><strong>Coverage</strong><span>inventory satisfaction, weighted by importance, minus unsupported extras</span></div>
+      <p class="note">
+        In the current benchmark, essential items carry weight <code>1.0</code>, optional items carry weight <code>0.5</code>, missing items are penalized more than overfill, and unsupported extras subtract a separate penalty term.
+      </p>
+    </section>
+
+    <section>
+      <h2>The Metric In One Formula</h2>
+      <div class="equation">
+        <strong>Coverage</strong> = 100 ×
+        (
+        ((Σ w<sub>i</sub> s<sub>i</sub> + Σ w<sub>g</sub> s<sub>g</sub>) / (Σ w<sub>i</sub> + Σ w<sub>g</sub>))
+        − p<sub>extra</sub>
+        )
+      </div>
+      <p>
+        The benchmark begins with a room-type specification. A master bedroom, for example, requires one bed, two end tables, and one storage piece, with television optional. Each required or optional item gets a score based on the predicted count, and some room functions are expressed as requirement groups rather than single categories. A full bath can satisfy bathing with a tub or a shower; a kitchen can satisfy cooking with a range or with oven plus cooktop.
+      </p>
+      <figure>
+        <img src="assets/fig_01_coverage_breakdown.svg" alt="Coverage metric breakdown">
+        <figcaption>
+          Coverage is a weighted inventory score. The benchmark first defines what a room type needs, then compares predicted counts to those allowed ranges, then subtracts a small penalty for unsupported extras.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Name Normalization Matters</h2>
+      <p>
+        A fair coverage metric cannot rely on exact spelling. Different methods say <code>King</code>, <code>bed</code>, <code>nightstand</code>, <code>endtable</code>, or <code>cabinet</code>. The benchmark normalizes all of those to canonical categories before scoring.
+      </p>
+      <figure>
+        <img src="assets/fig_02_item_score_curves.svg" alt="Coverage item score curves">
+        <figcaption>
+          Missing essentials hurts immediately. Overfilling still costs points, but it costs fewer.
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="assets/fig_03_requirement_groups.svg" alt="Coverage requirement groups">
+        <figcaption>
+          Requirement groups let the benchmark score room function, not just literal category lists.
+        </figcaption>
+      </figure>
+      <p>
+        In the current master-bedroom semantics, <code>cabinet</code>, <code>base_cabinet</code>, and <code>tv_cabinet</code> all count as the storage requirement and are normalized to <code>dresser</code>. That matters because otherwise methods would be punished for naming conventions rather than for genuine inventory failures.
+      </p>
+    </section>
+
+    <section>
+      <h2>A Master-Bedroom Example</h2>
+      <p>
+        Same room, two inventories. Both panels show the same master-bedroom layout. Only Case A includes the full requested program.
+      </p>
+      <figure>
+        <img src="assets/fig_04_masterbed_coverage_case.png" alt="Coverage case study: same master bedroom, different inventories">
+        <figcaption>
+          On the left, the prediction includes bed, two end tables, storage, and TV, so coverage is <strong>100.0</strong>. On the right, the dresser and TV are removed — the score falls to <strong>71.4</strong> because the essential storage item is missing.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Try The Score Yourself</h2>
+      <p>
+        This calculator uses the current master-bedroom spec directly: bed <code>1..1</code>, end tables <code>2..2</code>, dresser <code>1..1</code>, TV <code>0..1</code>, plus a penalty for unsupported extras.
+      </p>
+      <div class="calc">
+        <h3>Coverage Calculator</h3>
+        <div class="calc-grid">
+          <div class="field">
+            <label for="bedCount">Beds <span id="bedCountValue">1</span></label>
+            <input id="bedCount" type="range" min="0" max="3" value="1">
+          </div>
+          <div class="field">
+            <label for="endtableCount">End tables <span id="endtableCountValue">2</span></label>
+            <input id="endtableCount" type="range" min="0" max="4" value="2">
+          </div>
+          <div class="field">
+            <label for="dresserCount">Dressers / cabinets <span id="dresserCountValue">1</span></label>
+            <input id="dresserCount" type="range" min="0" max="3" value="1">
+          </div>
+          <div class="field">
+            <label for="tvCount">TVs <span id="tvCountValue">1</span></label>
+            <input id="tvCount" type="range" min="0" max="3" value="1">
+          </div>
+          <div class="field">
+            <label for="extraCount">Unsupported extras <span id="extraCountValue">0</span></label>
+            <input id="extraCount" type="range" min="0" max="4" value="0">
+          </div>
+        </div>
+        <div class="result">
+          <strong id="coverageScore">100.0</strong>
+          <p id="coverageExplanation">Perfect inventory match: all required items are present and no unsupported extras are added.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What Coverage Captures, And What It Doesn’t</h2>
+      <p>
+        Coverage is intentionally blind to circulation. A room can score well on inventory and still be blocked. It can also score poorly while remaining easy to move through. That is why the benchmark keeps navigability and overlap-clearance as separate metrics.
+      </p>
+      <figure>
+        <img src="assets/fig_05_laundry_complementarity_case.png" alt="Laundry room complementarity case study">
+        <figcaption>
+          A room can move well and still fail coverage. This laundry room is easy to traverse, but the required dryer never appears.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/fig_06_coverage_leaderboard.svg" alt="Coverage leaderboard across benchmark methods">
+        <figcaption>
+          Current benchmark means for methods with canonical coverage rows available. DDEP stays high because it usually gets the room program right, while frontier models spread out much more.
+        </figcaption>
+      </figure>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Coverage answers “what should be there?”</h3>
+          <p>It checks counts, alternatives, semantic normalization, and unsupported inventory.</p>
+        </div>
+        <div class="card">
+          <h3>It does not answer “can I use it?”</h3>
+          <p>That question belongs to navigability and overlap-clearance, which are explicitly geometric.</p>
+        </div>
+        <div class="card">
+          <h3>That separation is deliberate</h3>
+          <p>The benchmark becomes easier to interpret when each metric isolates one failure mode instead of mixing everything together.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- <p class="footer-note">
+      Current reference point used here: DDEP heldout mean coverage <strong>98.1</strong> on the current ECCV benchmark bundle.
+    </p> -->
+  </main>
+
+  <script>
+    function itemScore(predicted, minRequired, maxAllowed) {
+      const missing = Math.max(0, minRequired - predicted) / Math.max(1, minRequired);
+      const overfill = Math.max(0, predicted - maxAllowed) / Math.max(1, maxAllowed);
+      return Math.max(0, Math.min(1, 1 - (1.0 * missing + 0.5 * overfill)));
+    }
+
+    function updateCoverage() {
+      const bed = Number(document.getElementById('bedCount').value);
+      const endtable = Number(document.getElementById('endtableCount').value);
+      const dresser = Number(document.getElementById('dresserCount').value);
+      const tv = Number(document.getElementById('tvCount').value);
+      const extra = Number(document.getElementById('extraCount').value);
+
+      document.getElementById('bedCountValue').textContent = bed;
+      document.getElementById('endtableCountValue').textContent = endtable;
+      document.getElementById('dresserCountValue').textContent = dresser;
+      document.getElementById('tvCountValue').textContent = tv;
+      document.getElementById('extraCountValue').textContent = extra;
+
+      const weighted =
+        itemScore(bed, 1, 1) * 1.0 +
+        itemScore(endtable, 2, 2) * 1.0 +
+        itemScore(dresser, 1, 1) * 1.0 +
+        itemScore(tv, 0, 1) * 0.5;
+      const totalWeight = 3.5;
+      const extraPenalty = Math.min(1, 0.25 * extra / 4);
+      const coverage = Math.max(0, 100 * ((weighted / totalWeight) - extraPenalty));
+
+      document.getElementById('coverageScore').textContent = coverage.toFixed(1);
+
+      let explanation = `Weighted inventory score ${weighted.toFixed(2)} / ${totalWeight.toFixed(1)}`;
+      if (extra > 0) {
+        explanation += `, minus extra-item penalty ${extraPenalty.toFixed(2)}.`;
+      } else {
+        explanation += ` with no extra-item penalty.`;
+      }
+      document.getElementById('coverageExplanation').textContent = explanation;
+    }
+
+    for (const id of ['bedCount', 'endtableCount', 'dresserCount', 'tvCount', 'extraCount']) {
+      document.getElementById(id).addEventListener('input', updateCoverage);
+    }
+    updateCoverage();
+  </script>
+</body>
+</html>

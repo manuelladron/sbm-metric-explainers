@@ -1,0 +1,117 @@
+{
+  "version": "0.1",
+  "method": "ddep",
+  "input_room_id": "KCEPcTfwthFVwmTh",
+  "room_type": "POWDER",
+  "entities": [
+    {
+      "category": "Toilet",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.5,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 18.0,
+      "height": null,
+      "depth": 28.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_Toilet_01",
+        "originalAssetId": 2332,
+        "repAssetId": 125,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Sink",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.5,
+      "lateral_offset": 0.5,
+      "position": null,
+      "rotation": 0.0,
+      "width": 24.0,
+      "height": null,
+      "depth": 20.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_Sink_Above_23x18_01",
+        "originalAssetId": 119,
+        "repAssetId": 119,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "base_cabinet",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.5,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 29.52,
+      "height": 0.0,
+      "depth": 20.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "baseCabinet",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Mirror",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.5,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 24.0,
+      "height": null,
+      "depth": 2.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_Mirror_Framed_Wall_32x24_01",
+        "originalAssetId": 992,
+        "repAssetId": 992,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "TP",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.7260393111845538,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 7.0,
+      "height": null,
+      "depth": 7.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_TP_01",
+        "originalAssetId": 131,
+        "repAssetId": 131,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    }
+  ],
+  "metadata": {
+    "num_entities_predicted": 5,
+    "ddep_format": true
+  }
+}

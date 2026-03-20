@@ -1,0 +1,180 @@
+{
+  "version": "0.1",
+  "method": "ddep",
+  "input_room_id": "AhC5r2F9B5TA0OQR",
+  "room_type": "BATHFULL",
+  "entities": [
+    {
+      "category": "Tub",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.5,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 60.0,
+      "height": null,
+      "depth": 30.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_Tub_FreestandBasin_60x30_01",
+        "originalAssetId": 141,
+        "repAssetId": 141,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Toilet",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.5234715603771671,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 18.0,
+      "height": null,
+      "depth": 28.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_Toilet_01",
+        "originalAssetId": 125,
+        "repAssetId": 125,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Sink",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.18916658217580856,
+      "lateral_offset": 3.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 24.0,
+      "height": null,
+      "depth": 20.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_Sink_Above_23x18_01",
+        "originalAssetId": 119,
+        "repAssetId": 119,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "base_cabinet",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.18916658217580856,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 37.315,
+      "height": 0.0,
+      "depth": 20.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "baseCabinet",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Mirror",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.18916658217580856,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 24.0,
+      "height": null,
+      "depth": 2.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "mirror",
+        "originalAssetId": 992,
+        "repAssetId": 992,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "TowelBar",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.4765284396228328,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 24.0,
+      "height": null,
+      "depth": 3.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_Towel_Bar24_01",
+        "originalAssetId": 128,
+        "repAssetId": 128,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "TowelHand",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.7939462839278102,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 8.0,
+      "height": null,
+      "depth": 3.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_Towel_Hand_01",
+        "originalAssetId": 129,
+        "repAssetId": 129,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "TowelHook",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.3268438254938184,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 5.0,
+      "height": null,
+      "depth": 3.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Bath_Towel_Hook2_01",
+        "originalAssetId": 130,
+        "repAssetId": 130,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    }
+  ],
+  "metadata": {
+    "num_entities_predicted": 8,
+    "ddep_format": true
+  }
+}

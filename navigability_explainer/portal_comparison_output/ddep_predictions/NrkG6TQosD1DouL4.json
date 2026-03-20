@@ -1,0 +1,54 @@
+{
+  "version": "0.1",
+  "method": "ddep",
+  "input_room_id": "NrkG6TQosD1DouL4",
+  "room_type": "GARAGE",
+  "entities": [
+    {
+      "category": "Car",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.28500000000000003,
+      "lateral_offset": 196.285,
+      "position": null,
+      "rotation": 180.0,
+      "width": 70.0,
+      "height": null,
+      "depth": 195.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Garage_Car_Sedan_01",
+        "originalAssetId": 717,
+        "repAssetId": 717,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Car",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 1,
+      "t_value": 0.7150000000000001,
+      "lateral_offset": 196.285,
+      "position": null,
+      "rotation": 180.0,
+      "width": 70.0,
+      "height": null,
+      "depth": 195.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Garage_Car_Sedan_01",
+        "originalAssetId": 717,
+        "repAssetId": 717,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    }
+  ],
+  "metadata": {
+    "num_entities_predicted": 2,
+    "ddep_format": true
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "version": "0.1",
+  "method": "ddep",
+  "input_room_id": "9LKcmK5ZXKUwEuP9",
+  "room_type": "LAUNDRY",
+  "entities": [
+    {
+      "category": "Washer",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.32202037559837976,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 27.0,
+      "height": null,
+      "depth": 27.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Laundry_Washer_FrontLoad_01",
+        "originalAssetId": 1720,
+        "repAssetId": 784,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Dryer",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.6779796244016202,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 27.0,
+      "height": null,
+      "depth": 27.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Laundry_Dryer_Front_01",
+        "originalAssetId": 2318,
+        "repAssetId": 780,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "closet_shelf",
+      "entity_type": "CASEWORK",
+      "anchor_type": "wall_anchored",
+      "edge_id": 3,
+      "t_value": 0.5,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 81.47,
+      "height": 0.0,
+      "depth": 19.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "closet_shelf",
+        "originalAssetId": 0,
+        "repAssetId": 0,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    }
+  ],
+  "metadata": {
+    "num_entities_predicted": 3,
+    "ddep_format": true
+  }
+}

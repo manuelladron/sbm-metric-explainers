@@ -1,0 +1,96 @@
+{
+  "version": "0.1",
+  "method": "ddep",
+  "input_room_id": "npEIAuE92vmLfs1z",
+  "room_type": "LIVING",
+  "entities": [
+    {
+      "category": "Seat",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 2,
+      "t_value": 0.5,
+      "lateral_offset": 28.689999999999998,
+      "position": null,
+      "rotation": 0.0,
+      "width": 85.0,
+      "height": null,
+      "depth": 35.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Living_Seat_Sofa3Straight_01",
+        "originalAssetId": 828,
+        "repAssetId": 828,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Table",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.5,
+      "lateral_offset": 94.0,
+      "position": null,
+      "rotation": 180.0,
+      "width": 64.0,
+      "height": null,
+      "depth": 24.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Living_Table_Coffee_01",
+        "originalAssetId": 830,
+        "repAssetId": 830,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "Cabinet",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.5,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 66.0,
+      "height": null,
+      "depth": 18.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Living_Cabinet_TV_01",
+        "originalAssetId": 823,
+        "repAssetId": 823,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    },
+    {
+      "category": "TV",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 4,
+      "t_value": 0.5,
+      "lateral_offset": 0.0,
+      "position": null,
+      "rotation": 0.0,
+      "width": 56.0,
+      "height": null,
+      "depth": 5.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "Living_TV_65Wall_01",
+        "originalAssetId": 833,
+        "repAssetId": 832,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    }
+  ],
+  "metadata": {
+    "num_entities_predicted": 4,
+    "ddep_format": true
+  }
+}

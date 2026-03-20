@@ -1,0 +1,307 @@
+{
+  "meta": {
+    "generated_at_utc": "2026-03-06T20:35:46.834718+00:00",
+    "python_executable": "/Users/manuelrodriguez/Library/Caches/pypoetry/virtualenvs/lbm-model-v2-SKaYt-t7-py3.11/bin/python",
+    "input_dir": "/Users/manuelrodriguez/Documents/higharc/gits/ai-services/tools/benchmarks/lbm-ddep/heldout_query_set_eccv/layout_inputs/texts",
+    "processed_files_dir": "/Users/manuelrodriguez/Documents/higharc/gits/ai-services/tools/benchmarks/lbm-ddep/heldout_query_set_eccv/processed_home_files",
+    "inventory_config": "/Users/manuelrodriguez/Documents/higharc/gits/ai-services/tools/benchmarks/lbm-ddep/configs/guided_inventory_metrics.yaml",
+    "dimensions_config": "/Users/manuelrodriguez/Documents/higharc/gits/ai-services/tools/benchmarks/lbm-ddep/configs/dimensions.yaml",
+    "published_nav_json": "/Users/manuelrodriguez/Documents/higharc/publications/SBM_PAPER/CVPR/EVALUATIONS/metrics/navigability/all_methods/ddep/text/navigability.json",
+    "output_dir": "/Users/manuelrodriguez/Documents/higharc/publications/SBM_PAPER/ECCV/navigability_explainer/portal_comparison_output_test",
+    "num_rooms_compared": 1
+  },
+  "summaries": {
+    "published": {
+      "mean_nav": 62.530397422864326,
+      "std_nav": 0.0,
+      "mean_sr": 0.6666666666666666,
+      "std_sr": 0.0,
+      "mean_df": 0.1181791212514955,
+      "std_df": 0.0,
+      "num_rooms": 1
+    },
+    "recomputed_current": {
+      "mean_nav": 62.554520041514905,
+      "std_nav": 0.0,
+      "mean_sr": 0.6666666666666666,
+      "std_sr": 0.0,
+      "mean_df": 0.11748990357576437,
+      "std_df": 0.0,
+      "num_rooms": 1
+    },
+    "strict_offset": {
+      "mean_nav": 62.903519920832615,
+      "std_nav": 0.0,
+      "mean_sr": 0.6666666666666666,
+      "std_sr": 0.0,
+      "mean_df": 0.1075184784524013,
+      "std_df": 0.0,
+      "num_rooms": 1
+    },
+    "strict_minus_current": {
+      "mean_nav_delta": 0.34899987931770937,
+      "mean_sr_delta": 0.0,
+      "mean_df_delta": -0.009971425123363076,
+      "num_nav_improved": 1,
+      "num_nav_worsened": 0,
+      "num_nav_unchanged": 0
+    },
+    "recomputed_minus_published": {
+      "mean_nav_delta": 0.024122618650579852,
+      "mean_sr_delta": 0.0,
+      "mean_df_delta": -0.0006892176757311297
+    }
+  },
+  "top_changes": {
+    "largest_nav_increases": [
+      {
+        "room_id": "Whr6w2Utw3piKHOv",
+        "room_type": "GARAGE",
+        "nav_delta": 0.34899987931770937,
+        "sr_delta": 0.0,
+        "df_delta": -0.009971425123363076,
+        "portal_shift_mean_ft": 0.7000000000000001,
+        "portal_shift_max_ft": 1.05
+      }
+    ],
+    "largest_nav_drops": [
+      {
+        "room_id": "Whr6w2Utw3piKHOv",
+        "room_type": "GARAGE",
+        "nav_delta": 0.34899987931770937,
+        "sr_delta": 0.0,
+        "df_delta": -0.009971425123363076,
+        "portal_shift_mean_ft": 0.7000000000000001,
+        "portal_shift_max_ft": 1.05
+      }
+    ]
+  },
+  "rooms": {
+    "Whr6w2Utw3piKHOv": {
+      "room_type": "GARAGE",
+      "num_entities": 3,
+      "published_current": {
+        "room_type": "GARAGE",
+        "SR": 0.6666666666666666,
+        "DF": 0.1181791212514955,
+        "NavScore": 62.530397422864326,
+        "pairs": 9,
+        "targets": 3
+      },
+      "recomputed_current": {
+        "SR": 0.6666666666666666,
+        "DF": 0.11748990357576437,
+        "NavScore": 62.554520041514905,
+        "pairs": 9,
+        "targets": 3
+      },
+      "strict_offset": {
+        "SR": 0.6666666666666666,
+        "DF": 0.1075184784524013,
+        "NavScore": 62.903519920832615,
+        "pairs": 9,
+        "targets": 3
+      },
+      "recomputed_minus_published": {
+        "nav_delta": 0.024122618650579852,
+        "sr_delta": 0.0,
+        "df_delta": -0.0006892176757311297
+      },
+      "strict_minus_current": {
+        "nav_delta": 0.34899987931770937,
+        "sr_delta": 0.0,
+        "df_delta": -0.009971425123363076
+      },
+      "portal_shift_mean_ft": 0.7000000000000001,
+      "portal_shift_max_ft": 1.05,
+      "current_door_points": [
+        [
+          10.666666623263874,
+          0.0
+        ],
+        [
+          20.28333333333333,
+          18.256512799334555
+        ],
+        [
+          0.0,
+          18.232861633969396
+        ]
+      ],
+      "strict_door_points": [
+        [
+          10.666666623263874,
+          1.05
+        ],
+        [
+          20.28333333333333,
+          18.256512799334555
+        ],
+        [
+          1.05,
+          18.232861633969396
+        ]
+      ],
+      "current_portal_debug": [
+        {
+          "edge_id": 1,
+          "edge_candidate": [
+            10.666666623263874,
+            0.0
+          ],
+          "inward_candidate": [
+            10.666666623263874,
+            1.05
+          ],
+          "edge_walkable": [
+            10.666666623263874,
+            0.0
+          ],
+          "inward_walkable": [
+            10.666666623263874,
+            1.05
+          ],
+          "edge_snap_distance_ft": 0.0,
+          "inward_snap_distance_ft": 0.0,
+          "chosen": [
+            10.666666623263874,
+            0.0
+          ],
+          "chosen_policy": "edge"
+        },
+        {
+          "edge_id": 2,
+          "edge_candidate": [
+            21.333333333333332,
+            18.256512799334555
+          ],
+          "inward_candidate": [
+            20.28333333333333,
+            18.256512799334555
+          ],
+          "edge_walkable": [
+            21.246824218749996,
+            18.186339843749998
+          ],
+          "inward_walkable": [
+            20.28333333333333,
+            18.256512799334555
+          ],
+          "edge_snap_distance_ft": 0.11139151943242782,
+          "inward_snap_distance_ft": 0.0,
+          "chosen": [
+            20.28333333333333,
+            18.256512799334555
+          ],
+          "chosen_policy": "inward"
+        },
+        {
+          "edge_id": 6,
+          "edge_candidate": [
+            0.0,
+            18.232861633969396
+          ],
+          "inward_candidate": [
+            1.05,
+            18.232861633969396
+          ],
+          "edge_walkable": [
+            0.0,
+            18.232861633969396
+          ],
+          "inward_walkable": [
+            1.05,
+            18.232861633969396
+          ],
+          "edge_snap_distance_ft": 0.0,
+          "inward_snap_distance_ft": 0.0,
+          "chosen": [
+            0.0,
+            18.232861633969396
+          ],
+          "chosen_policy": "edge"
+        }
+      ],
+      "strict_portal_debug": [
+        {
+          "edge_id": 1,
+          "edge_candidate": [
+            10.666666623263874,
+            0.0
+          ],
+          "inward_candidate": [
+            10.666666623263874,
+            1.05
+          ],
+          "edge_walkable": [
+            10.666666623263874,
+            0.0
+          ],
+          "inward_walkable": [
+            10.666666623263874,
+            1.05
+          ],
+          "edge_snap_distance_ft": 0.0,
+          "inward_snap_distance_ft": 0.0,
+          "chosen": [
+            10.666666623263874,
+            1.05
+          ],
+          "chosen_policy": "strict_inward"
+        },
+        {
+          "edge_id": 2,
+          "edge_candidate": [
+            21.333333333333332,
+            18.256512799334555
+          ],
+          "inward_candidate": [
+            20.28333333333333,
+            18.256512799334555
+          ],
+          "edge_walkable": [
+            21.246824218749996,
+            18.186339843749998
+          ],
+          "inward_walkable": [
+            20.28333333333333,
+            18.256512799334555
+          ],
+          "edge_snap_distance_ft": 0.11139151943242782,
+          "inward_snap_distance_ft": 0.0,
+          "chosen": [
+            20.28333333333333,
+            18.256512799334555
+          ],
+          "chosen_policy": "strict_inward"
+        },
+        {
+          "edge_id": 6,
+          "edge_candidate": [
+            0.0,
+            18.232861633969396
+          ],
+          "inward_candidate": [
+            1.05,
+            18.232861633969396
+          ],
+          "edge_walkable": [
+            0.0,
+            18.232861633969396
+          ],
+          "inward_walkable": [
+            1.05,
+            18.232861633969396
+          ],
+          "edge_snap_distance_ft": 0.0,
+          "inward_snap_distance_ft": 0.0,
+          "chosen": [
+            1.05,
+            18.232861633969396
+          ],
+          "chosen_policy": "strict_inward"
+        }
+      ]
+    }
+  }
+}

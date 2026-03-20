@@ -1,0 +1,6 @@
+paper-template-Latest/
+paper-template-Latest.zip
+coverage_navigability_explainer/
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,33 @@
+{
+  "version": "0.1",
+  "method": "ddep",
+  "input_room_id": "bWBttDxwis5grhUz",
+  "room_type": "DINING",
+  "entities": [
+    {
+      "category": "diningSet",
+      "entity_type": "PROP",
+      "anchor_type": "wall_anchored",
+      "edge_id": 6,
+      "t_value": 0.5,
+      "lateral_offset": 46.035,
+      "position": null,
+      "rotation": 0.0,
+      "width": 114.0,
+      "height": null,
+      "depth": 71.0,
+      "method_confidence": null,
+      "method_metadata": {
+        "repName": "diningSet",
+        "originalAssetId": null,
+        "repAssetId": null,
+        "placementStart": null,
+        "placementEnd": null
+      }
+    }
+  ],
+  "metadata": {
+    "num_entities_predicted": 1,
+    "ddep_format": true
+  }
+}

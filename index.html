@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SBM Benchmark Metric Explainers</title>
+  <style>
+    :root {
+      --paper: #f6f1e8;
+      --panel: #fffdfc;
+      --ink: #131313;
+      --muted: #66615b;
+      --line: #d8d0c4;
+      --coverage: #2d7d4f;
+      --navigability: #1d6f72;
+      --oc: #b64f3f;
+      --shadow: 0 20px 42px rgba(17, 17, 17, 0.08);
+      --radius: 22px;
+      --content: 820px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(45, 125, 79, 0.07), transparent 22rem),
+        radial-gradient(circle at top right, rgba(29, 111, 114, 0.07), transparent 22rem),
+        radial-gradient(circle at bottom center, rgba(182, 79, 63, 0.06), transparent 22rem),
+        var(--paper);
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      line-height: 1.72;
+    }
+    main {
+      width: min(100%, calc(var(--content) + 3rem));
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem 5rem;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 0.9rem;
+      color: var(--muted);
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    h1, h2 {
+      margin: 0 0 1rem;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    h1 { font-size: clamp(2.6rem, 5.5vw, 4.2rem); max-width: 18ch; }
+    p { font-size: 1.08rem; }
+    .lead {
+      margin-top: 1.2rem;
+      max-width: 44rem;
+      font-size: 1.22rem;
+      line-height: 1.62;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+      margin-top: 2.8rem;
+    }
+    .card {
+      display: block;
+      padding: 1.8rem 2rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(19, 19, 19, 0.08);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--ink);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 48px rgba(17, 17, 17, 0.12);
+    }
+    .card-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    .card h2 {
+      margin: 0;
+      font-size: 1.65rem;
+    }
+    .card .formula {
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(19, 19, 19, 0.04);
+    }
+    .card .description {
+      margin: 0;
+      font-size: 1.04rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .card .arrow {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .card.coverage h2 { color: var(--coverage); }
+    .card.coverage .formula { color: var(--coverage); }
+    .card.coverage .arrow { color: var(--coverage); }
+
+    .card.navigability h2 { color: var(--navigability); }
+    .card.navigability .formula { color: var(--navigability); }
+    .card.navigability .arrow { color: var(--navigability); }
+
+    .card.oc h2 { color: var(--oc); }
+    .card.oc .formula { color: var(--oc); }
+    .card.oc .arrow { color: var(--oc); }
+
+    .footer-note {
+      margin-top: 3.2rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      main { padding-top: 2.5rem; }
+      .card { padding: 1.3rem 1.2rem; }
+      .card-header { flex-direction: column; gap: 0.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="eyebrow">ECCV 2026 &middot; SBM Paper</span>
+    <h1>Benchmark Metric Explainers</h1>
+    <p class="lead">
+      The SBM benchmark evaluates generated room layouts on three complementary axes: whether the right inventory is present, whether a person can reach it, and whether the geometry is physically plausible. Each explainer walks through one metric with interactive examples.
+    </p>
+
+    <div class="cards">
+      <a class="card coverage" href="coverage_explainer/index.html">
+        <div class="card-header">
+          <h2>Coverage</h2>
+          <span class="formula">100 &times; (&Sigma; w&#8342;s&#8342; / &Sigma; w&#8342; &minus; p<sub>extra</sub>)</span>
+        </div>
+        <p class="description">
+          Did the method furnish the room with the right inventory? Coverage measures whether required items are present in the right quantities, weighted by importance, with a mild penalty for hallucinated extras. It is deliberately not a geometry metric.
+        </p>
+        <span class="arrow">Read the explainer &rarr;</span>
+      </a>
+
+      <a class="card navigability" href="navigability_explainer/index.html">
+        <div class="card-header">
+          <h2>Navigability</h2>
+          <span class="formula">100 &times; (SR &minus; 0.35 &times; DF)</span>
+        </div>
+        <p class="description">
+          Can someone walk in from the door and reach the things that matter? Navigability turns that question into pathfinding on a rasterized walkable grid, measuring both reachability and how much furniture forces inconvenient detours.
+        </p>
+        <span class="arrow">Read the explainer &rarr;</span>
+      </a>
+
+      <a class="card oc" href="overlap_clearance_explainer/index.html">
+        <div class="card-header">
+          <h2>Overlap &amp; Clearance</h2>
+          <span class="formula">0.5 &times; EOF + 0.2 &times; GOA + 0.3 &times; DCI</span>
+        </div>
+        <p class="description">
+          Is the geometry physically plausible? OC measures furniture collisions, blocked doorway zones, and objects that stick outside the room. It is the cleanup metric that makes bad geometry explicit, even when coverage and navigability look fine.
+        </p>
+        <span class="arrow">Read the explainer &rarr;</span>
+      </a>
+    </div>
+
+    <p class="footer-note">
+      Each explainer is a standalone static page with interactive calculators. No build step required.
+    </p>
+  </main>
+</body>
+</html>

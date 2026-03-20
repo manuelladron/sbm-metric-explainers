@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navigability: A Benchmark Explainer</title>
+  <style>
+    :root {
+      --paper: #f6f1e8;
+      --panel: #fffdfc;
+      --ink: #121212;
+      --muted: #646464;
+      --line: #dad3c7;
+      --teal: #1d6f72;
+      --teal-soft: #dcebea;
+      --warm: #ba5b33;
+      --warm-soft: #f1e2bc;
+      --gold: #d1a85a;
+      --shadow: 0 18px 48px rgba(17, 17, 17, 0.08);
+      --radius: 22px;
+      --content: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(29, 111, 114, 0.08), transparent 26rem),
+        radial-gradient(circle at top right, rgba(186, 91, 51, 0.09), transparent 24rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      line-height: 1.72;
+    }
+
+    main {
+      width: min(100%, calc(var(--content) + 3rem));
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 700;
+      line-height: 1.12;
+      margin: 0 0 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      margin-top: 3.4rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 0;
+    }
+
+    p,
+    li {
+      font-size: 1.09rem;
+      color: var(--ink);
+    }
+
+    p.lead {
+      font-size: 1.28rem;
+      line-height: 1.62;
+      max-width: 38rem;
+      margin-top: 1.2rem;
+    }
+
+    .hero {
+      padding: 0.5rem 0 2rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: start;
+    }
+
+    .formula-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.95rem 1.15rem;
+      margin-top: 1.6rem;
+      border: 1px solid rgba(17, 17, 17, 0.09);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.66);
+      box-shadow: var(--shadow);
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.98rem;
+    }
+
+    .formula-chip strong {
+      color: var(--teal);
+      font-size: 1rem;
+    }
+
+    .note {
+      border-left: 3px solid var(--teal);
+      padding: 0.2rem 0 0.2rem 1rem;
+      color: var(--muted);
+      margin: 1.4rem 0 0;
+      max-width: 43rem;
+    }
+
+    figure {
+      margin: 2rem 0 0;
+      padding: 1.1rem;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    figure img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      background: var(--panel);
+    }
+
+    figcaption {
+      margin-top: 0.95rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .equation {
+      margin: 1.35rem 0;
+      padding: 1rem 1.15rem;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      font-size: 1.05rem;
+    }
+
+    .equation strong {
+      color: var(--teal);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .card {
+      padding: 1.15rem 1.1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: var(--shadow);
+    }
+
+    .card p {
+      margin: 0.4rem 0 0;
+      font-size: 0.99rem;
+      color: var(--muted);
+    }
+
+    .mini {
+      margin-top: 0.7rem;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .metric-table {
+      margin-top: 1.4rem;
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.96rem;
+    }
+
+    .metric-table th,
+    .metric-table td {
+      padding: 0.8rem 0.7rem;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+
+    .metric-table th {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .metric-table td:first-child {
+      font-weight: 700;
+    }
+
+    .strong {
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .warn {
+      color: var(--warm);
+      font-weight: 700;
+    }
+
+    .calc {
+      margin-top: 1.8rem;
+      padding: 1.4rem;
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, rgba(29, 111, 114, 0.08), transparent 42%),
+        linear-gradient(145deg, rgba(186, 91, 51, 0.08), transparent 58%),
+        rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .calc h3 {
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-items: start;
+      margin-top: 1rem;
+    }
+
+    .slider-row label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.92rem;
+      margin-bottom: 0.45rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--teal);
+    }
+
+    .result {
+      padding: 1rem 1.05rem;
+      border-radius: 18px;
+      background: rgba(18, 18, 18, 0.93);
+      color: white;
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+    }
+
+    .result .score {
+      display: block;
+      font-size: 2.4rem;
+      line-height: 1;
+      margin: 0.35rem 0 0.5rem;
+      letter-spacing: -0.05em;
+    }
+
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.8rem;
+    }
+
+    .preset-row button {
+      appearance: none;
+      border: 1px solid rgba(17, 17, 17, 0.12);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.55rem 0.8rem;
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .preset-row button:hover {
+      border-color: rgba(29, 111, 114, 0.35);
+      color: var(--teal);
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    @media (min-width: 860px) {
+      .calc-grid {
+        grid-template-columns: 1.3fr 0.8fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        padding-top: 2.2rem;
+      }
+
+      figure {
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav style="
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    background: rgba(246, 241, 232, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(19,19,19,0.06);
+    font-family: 'Avenir Next','Helvetica Neue',Helvetica,sans-serif;
+    font-size: 0.82rem; font-weight: 600;
+  ">
+    <a href="../index.html" style="color:#131313; text-decoration:none; letter-spacing:0.04em;">All Metrics</a>
+    <span style="color:#d8d0c4;">/</span>
+    <a href="../coverage_explainer/index.html" style="color:#66615b; text-decoration:none;">Coverage</a>
+    <span style="color:#d8d0c4;">|</span>
+    <span style="color:#1d6f72;">Navigability</span>
+    <span style="color:#d8d0c4;">|</span>
+    <a href="../overlap_clearance_explainer/index.html" style="color:#66615b; text-decoration:none;">Overlap &amp; Clearance</a>
+  </nav>
+  <main>
+    <section class="hero">
+      <span class="eyebrow">Benchmark Notes · Part 1</span>
+      <div class="hero-grid">
+        <div>
+          <h1>Navigability: how we score whether a generated room actually works</h1>
+          <p class="lead">A layout can look plausible and still fail the most human test imaginable: can someone walk in from the door and reach the things that matter? Our navigability metric turns that question into geometry, pathfinding, and a score that exposes both access and inconvenience.</p>
+          <div class="formula-chip">
+            <strong>Nav = 100 × (SR − 0.35 × DF)</strong>
+            <span>with a score range of <strong>−35</strong> to <strong>100</strong></span>
+          </div>
+          <p class="note">This explainer is based on the current paper text in the main submission and supplementary material, plus the metric implementation in the benchmark code. The code and supplement now agree on door portals: offset inward by <em>r + ε</em>, then snap to the nearest walkable grid cell if rasterization demands it.</p>
+        </div>
+      </div>
+    </section>
+
+    <figure>
+      <img src="assets/fig_00_legend_strip.svg" alt="Legend for navigability visual assets">
+      <figcaption>The visual language used throughout: walls, door portals, essential targets, inflated obstacles, straight-line references, and A* paths.</figcaption>
+    </figure>
+
+    <h2>The core idea</h2>
+    <p>For every room <em>r</em>, the benchmark builds a set of <strong>door portals</strong> and a set of <strong>essential targets</strong>. It then evaluates every door-target pair. If a collision-free path exists, that pair is reachable. If the path exists but winds awkwardly around furniture, it is still reachable, but it pays a detour penalty.</p>
+
+    <div class="equation">
+      <div><strong>SR(r)</strong> = (1 / |D<sub>r</sub>| |T<sub>r</sub>|) × Σ<sub>d∈D<sub>r</sub></sub> Σ<sub>t∈T<sub>r</sub></sub> δ(d, t)</div>
+      <div class="mini">Success Rate asks one question only: does a path exist?</div>
+    </div>
+
+    <div class="equation">
+      <div><strong>ρ(d, t)</strong> = L(d, t) / max(‖t − d‖, ε), &nbsp;&nbsp; <strong>f(ρ)</strong> = min(1, (ρ − 1) / 2)</div>
+      <div><strong>DF(r)</strong> = average of f(ρ) over reachable pairs only</div>
+      <div class="mini">Detour Factor only measures pairs that already passed the reachability test.</div>
+    </div>
+
+    <figure>
+      <img src="assets/fig_01_navigability_pipeline.svg" alt="Pipeline overview for the navigability metric">
+      <figcaption>The metric pipeline in one picture. First identify doors and essential targets, then inflate furniture by human clearance, carve out the walkable mask, and finally run A* over every door-target pair.</figcaption>
+    </figure>
+
+    <h2>Doors are not points on the wall</h2>
+    <p>A door opening is first converted into a <em>portal</em>. That distinction matters. The benchmark now follows the supplementary definition directly: start at the midpoint of the opening, offset it into the room by <em>r + ε</em>, and then snap that candidate to the nearest walkable grid cell if rasterization places it on a blocked pixel.</p>
+
+    <figure>
+      <img src="assets/fig_02_door_portal.svg" alt="Door portal construction">
+      <figcaption>The geometry and the implementation now match. The portal is defined inward from the door midpoint, then discretized onto the walkable raster only when needed.</figcaption>
+    </figure>
+
+    <h2>Targets are semantic, not generic</h2>
+    <p>This metric is not trying to measure whether you can reach any empty patch of floor. It asks whether you can reach the objects that make a room function. Those essentials come from the same inventory used for coverage. In bedrooms, beds are special: a bed contributes <strong>two side targets</strong>, because access to one side alone is not the same thing as having a usable bed layout. Other essentials, such as sinks, toilets, ranges, and dressers, contribute a <strong>front target</strong>.</p>
+
+    <figure>
+      <img src="assets/fig_03_target_construction.svg" alt="Target construction for side access and front access">
+      <figcaption>Two target rules dominate the benchmark. Beds create left and right access targets. Most other essential objects create one target in the usable space directly in front of the object.</figcaption>
+    </figure>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Bedroom logic</h3>
+        <p>In the current inventory, a <code>BEDROOM</code> requires a bed and at least one end table. A <code>MASTER_BED</code> also requires a dresser. The metric therefore cares about specific access patterns, not just total floor coverage.</p>
+      </div>
+      <div class="card">
+        <h3>Code nuance</h3>
+        <p>The implementation also canonicalizes category names, uses fallback dimensions when predicted sizes are missing, and snaps targets to nearby walkable cells to avoid grid discretization artifacts.</p>
+      </div>
+    </div>
+
+    <h2>Furniture “grows” before pathfinding starts</h2>
+    <p>The benchmark does not route through raw furniture footprints. It routes through a <strong>clearance-aware</strong> version of the room. Every entity rectangle is inflated by a Minkowski sum with a disk of radius <em>r = w / 2</em>, where the default corridor width is <strong>2.0 ft</strong>. In plain language: a couch is not just a couch, it is the couch plus the space a person needs around it.</p>
+
+    <figure>
+      <img src="assets/fig_04_clearance_and_walkable_space.svg" alt="Clearance model and walkable space">
+      <figcaption>The navigability metric is really a clearance metric in disguise. Once furniture is inflated, the walkable region is just “room polygon minus inflated obstacles.”</figcaption>
+    </figure>
+
+    <p>There is an important implementation detail here. The paper presents a single clearance model, but the benchmark code softens some categories in practice: non-essential items can use lighter inflation, and tubs or showers may not inflate at all. That makes the metric less brittle while preserving the main functional question.</p>
+
+    <h2>Reachability and detour are not the same thing</h2>
+    <p>If a path exists, the pair contributes to <strong>SR</strong>. If that path is longer than the straight-line distance, it contributes to <strong>DF</strong>. Those are deliberately separate. A blocked layout should not be double-penalized as both unreachable and infinitely detoured. Conversely, a reachable layout should not get a free pass just because a path exists in principle.</p>
+
+    <figure>
+      <img src="assets/fig_05_reachability_vs_detour.svg" alt="Reachability versus detour">
+      <figcaption>Left: a target is reachable, but the route bends around a bench, so DF increases. Right: once another object seals off access, the path disappears entirely, so SR drops instead.</figcaption>
+    </figure>
+
+    <h2>How the score is assembled</h2>
+    <p>Once every pair has been tested, the final score is almost brutally simple. SR is the fraction of successful door-target pairs. DF is the average detour penalty over the successful pairs only. The score is then a linear tradeoff between the two.</p>
+
+    <figure>
+      <img src="assets/fig_06_score_decomposition.svg" alt="Score decomposition">
+      <figcaption>A small example makes the algebra more intuitive. Reachability determines how many pairs survive. Detour only measures the surviving ones. Then the benchmark applies the fixed weight λ = 0.35.</figcaption>
+    </figure>
+
+    <section class="calc">
+      <h3>Interactive score calculator</h3>
+      <p class="mini">The benchmark currently fixes λ at 0.35. Use the sliders or tap a preset to see how SR and DF combine into NavScore.</p>
+      <div class="calc-grid">
+        <div>
+          <div class="slider-row">
+            <label for="sr">
+              <span>Success Rate (SR)</span>
+              <strong id="sr-value">0.44</strong>
+            </label>
+            <input id="sr" type="range" min="0" max="1" step="0.01" value="0.44">
+          </div>
+          <div class="slider-row">
+            <label for="df">
+              <span>Detour Factor (DF)</span>
+              <strong id="df-value">0.52</strong>
+            </label>
+            <input id="df" type="range" min="0" max="1" step="0.01" value="0.52">
+          </div>
+          <div class="preset-row">
+            <button type="button" data-sr="0.44" data-df="0.52">DDEP preset</button>
+            <button type="button" data-sr="0.13" data-df="0.87">ATISS preset</button>
+            <button type="button" data-sr="0.03" data-df="0.96">BLT preset</button>
+            <button type="button" data-sr="1.00" data-df="0.00">Perfect room</button>
+          </div>
+        </div>
+        <div class="result">
+          <div>Nav = 100 × (SR − 0.35 × DF)</div>
+          <span class="score" id="nav-score">26.0</span>
+          <div id="nav-label">Moderately navigable.</div>
+          <div class="mini" id="nav-detail" style="color: rgba(255,255,255,0.82);">Illustrative preset from the controlled benchmark draft.</div>
+        </div>
+      </div>
+    </section>
+
+    <h2>What the benchmark is saying right now</h2>
+    <p>In the current controlled same-data benchmark draft, the reference numbers are not subtle. <strong>DDEP</strong> sits at <span class="strong">SR = 0.44</span>, <span class="strong">DF = 0.52</span>, and <span class="strong">Nav = 26.0</span>. <strong>ATISS</strong> lands at <span class="warn">SR = 0.13</span>, <span class="warn">DF = 0.87</span>, and <span class="warn">Nav = −17.7</span>. <strong>BLT</strong> drops further to <span class="warn">SR = 0.03</span>, <span class="warn">DF = 0.96</span>, and <span class="warn">Nav = −30.6</span>.</p>
+    <p>The scatter plot below is a useful way to read the metric. Good models live in the <strong>upper-left</strong>: high reachability and low detour. Negative scores happen when a method moves to the lower-right, where only a few paths survive and the surviving ones are still bad.</p>
+
+    <figure>
+      <img src="assets/fig_07_controlled_benchmark.svg" alt="Controlled benchmark plot">
+      <figcaption>SR-DF space tells the story more cleanly than the scalar score alone. DDEP is not merely “a bit better”; it occupies a meaningfully different part of the tradeoff surface.</figcaption>
+    </figure>
+
+    <table class="metric-table">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>SR</th>
+          <th>DF</th>
+          <th>Nav</th>
+          <th>Interpretation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DDEP</td>
+          <td>0.44</td>
+          <td>0.52</td>
+          <td class="strong">+26.0</td>
+          <td>Many essential routes still fail, but enough usable paths remain for a positive score.</td>
+        </tr>
+        <tr>
+          <td>ATISS</td>
+          <td>0.13</td>
+          <td>0.87</td>
+          <td class="warn">−17.7</td>
+          <td>Very few targets are reachable, and the few that are require long, indirect routes.</td>
+        </tr>
+        <tr>
+          <td>BLT</td>
+          <td>0.03</td>
+          <td>0.96</td>
+          <td class="warn">−30.6</td>
+          <td>Almost no functional access remains under the clearance model.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What the raw benchmark output looks like</h2>
+    <p>The final figure below uses the real master bedroom you pointed to: <code>XvLpePHYAIibaGeI</code>. On the left is a clean reconstruction of the heldout room geometry. On the right is the corresponding DDEP navigability diagnostic regenerated with the ECCV inward-portal logic.</p>
+
+    <figure>
+      <img src="assets/fig_08_real_benchmark_case.png" alt="Real benchmark case study">
+      <figcaption>Room <code>XvLpePHYAIibaGeI</code> from the heldout <code>MASTER_BED</code> set. This one is almost a “textbook” positive case: one door, four essential targets, perfect reachability, and only mild detour.</figcaption>
+    </figure>
+
+    <h2>The shortest honest summary</h2>
+    <p>Navigability is a functional metric. It does not ask whether a room looks balanced. It asks whether a person can enter from the door and reach the things that make the room usable, while honoring a fixed clearance model. That is why it pairs so well with coverage and overlap/clearance: together, those metrics ask <em>what was placed</em>, <em>whether it physically fits</em>, and <em>whether it can actually be used</em>.</p>
+
+  </main>
+
+  <script>
+    const lambda = 0.35;
+    const srInput = document.getElementById('sr');
+    const dfInput = document.getElementById('df');
+    const srValue = document.getElementById('sr-value');
+    const dfValue = document.getElementById('df-value');
+    const navScore = document.getElementById('nav-score');
+    const navLabel = document.getElementById('nav-label');
+    const navDetail = document.getElementById('nav-detail');
+
+    function updateScore() {
+      const sr = Number(srInput.value);
+      const df = Number(dfInput.value);
+      const nav = 100 * (sr - lambda * df);
+
+      srValue.textContent = sr.toFixed(2);
+      dfValue.textContent = df.toFixed(2);
+      navScore.textContent = nav.toFixed(1);
+
+      if (nav >= 75) {
+        navLabel.textContent = 'Highly navigable.';
+        navDetail.textContent = 'Almost every essential route survives, and the surviving routes stay direct.';
+      } else if (nav >= 25) {
+        navLabel.textContent = 'Moderately navigable.';
+        navDetail.textContent = 'The room works often enough to stay positive, but access friction is still noticeable.';
+      } else if (nav >= 0) {
+        navLabel.textContent = 'Barely functional.';
+        navDetail.textContent = 'Some paths remain, but either reachability or route quality is weak.';
+      } else {
+        navLabel.textContent = 'Functionally poor.';
+        navDetail.textContent = 'Reachability is too low, or the few surviving paths are so circuitous that the score falls below zero.';
+      }
+    }
+
+    srInput.addEventListener('input', updateScore);
+    dfInput.addEventListener('input', updateScore);
+
+    document.querySelectorAll('[data-sr]').forEach((button) => {
+      button.addEventListener('click', () => {
+        srInput.value = button.dataset.sr;
+        dfInput.value = button.dataset.df;
+        updateScore();
+      });
+    });
+
+    updateScore();
+  </script>
+</body>
+</html>

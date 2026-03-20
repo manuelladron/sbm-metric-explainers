@@ -1,0 +1,189 @@
+{
+  "rooms": {
+    "TXqo2pbV0SWKAT7A": {
+      "room_type": "POWDER",
+      "SR": 1.0,
+      "DF": 0.009794315066305903,
+      "NavScore": 99.6571989726793,
+      "pairs": 1,
+      "targets": 1
+    },
+    "TC5fzO0sIGs0TNxy": {
+      "room_type": "OFFICE",
+      "SR": 0.0,
+      "DF": 1.0,
+      "NavScore": -35.0,
+      "pairs": 12,
+      "targets": 4
+    },
+    "DKw40v8TQG0G05Wo": {
+      "room_type": "LAUNDRY",
+      "SR": 1.0,
+      "DF": 0.02275129392261982,
+      "NavScore": 99.2037047127083,
+      "pairs": 2,
+      "targets": 2
+    },
+    "QmZjhBBDVWwYWEoU": {
+      "room_type": "MASTER_BED",
+      "SR": 0.3,
+      "DF": 0.18032410377224517,
+      "NavScore": 23.68865636797142,
+      "pairs": 10,
+      "targets": 5
+    },
+    "q9FHiewuL6Ryv6NI": {
+      "room_type": "BEDROOM",
+      "SR": 0.25,
+      "DF": 0.040325967053285616,
+      "NavScore": 23.588591153135003,
+      "pairs": 4,
+      "targets": 2
+    },
+    "b7dLo58Uq5uoHIVI": {
+      "room_type": "KITCHEN",
+      "SR": 1.0,
+      "DF": 0.06545098593633286,
+      "NavScore": 97.70921549222835,
+      "pairs": 2,
+      "targets": 2
+    },
+    "om5k9YFcVPJWUY0Q": {
+      "room_type": "LAUNDRY",
+      "SR": 1.0,
+      "DF": 0.010839472379834236,
+      "NavScore": 99.6206184667058,
+      "pairs": 2,
+      "targets": 2
+    },
+    "9CIREbVNOitM1ril": {
+      "room_type": "BATHFULL",
+      "SR": 1.0,
+      "DF": 0.04424238995502938,
+      "NavScore": 98.45151635157397,
+      "pairs": 2,
+      "targets": 2
+    },
+    "NfB3SHoC6YFUco4X": {
+      "room_type": "POWDER",
+      "SR": 1.0,
+      "DF": 0.03909901951072747,
+      "NavScore": 98.63153431712453,
+      "pairs": 1,
+      "targets": 1
+    },
+    "QlNuj18ktFhncLWG": {
+      "room_type": "BATHFULL",
+      "SR": 1.0,
+      "DF": 0.03924808922900397,
+      "NavScore": 98.62631687698486,
+      "pairs": 2,
+      "targets": 2
+    },
+    "6pf14khGgdGqdyMh": {
+      "room_type": "BATHFULL",
+      "SR": 1.0,
+      "DF": 0.027729878042319134,
+      "NavScore": 99.02945426851883,
+      "pairs": 2,
+      "targets": 2
+    },
+    "Kx9nqNs4LRBUxlLW": {
+      "room_type": "LIVING",
+      "SR": 0.5,
+      "DF": 0.15007729925899327,
+      "NavScore": 44.74729452593523,
+      "pairs": 2,
+      "targets": 2
+    },
+    "KCEPcTfwthFVwmTh": {
+      "room_type": "POWDER",
+      "SR": 1.0,
+      "DF": 0.042468169801345046,
+      "NavScore": 98.51361405695293,
+      "pairs": 1,
+      "targets": 1
+    },
+    "NrkG6TQosD1DouL4": {
+      "room_type": "GARAGE",
+      "SR": 1.0,
+      "DF": 0.0041159627773813545,
+      "NavScore": 99.85594130279165,
+      "pairs": 1,
+      "targets": 1
+    },
+    "npEIAuE92vmLfs1z": {
+      "room_type": "LIVING",
+      "SR": 0.5,
+      "DF": 1.0,
+      "NavScore": 15.000000000000002,
+      "pairs": 2,
+      "targets": 2
+    },
+    "XR2Wuc1R2cwFXoPL": {
+      "room_type": "LIVING",
+      "SR": 0.5,
+      "DF": 0.10436729687321211,
+      "NavScore": 46.34714460943757,
+      "pairs": 2,
+      "targets": 2
+    },
+    "kPWkfQuccvnhkUNI": {
+      "room_type": "POWDER",
+      "SR": 1.0,
+      "DF": 0.03186797298528388,
+      "NavScore": 98.88462094551507,
+      "pairs": 1,
+      "targets": 1
+    },
+    "ABXIugiZi3xC7Szq": {
+      "room_type": "BEDROOM",
+      "SR": 0.16666666666666666,
+      "DF": -2.220446049250313e-16,
+      "NavScore": 16.666666666666675,
+      "pairs": 6,
+      "targets": 2
+    },
+    "aRgtwAwwRs1YLUdE": {
+      "room_type": "LAUNDRY",
+      "SR": 1.0,
+      "DF": 0.10902304742615973,
+      "NavScore": 96.1841933400844,
+      "pairs": 4,
+      "targets": 2
+    },
+    "y1R3RQ0zbpx3SYgN": {
+      "room_type": "LIVING",
+      "SR": 0.0,
+      "DF": 1.0,
+      "NavScore": -35.0,
+      "pairs": 2,
+      "targets": 2
+    },
+    "UqmWkf1wqQDTCOtn": {
+      "room_type": "OFFICE",
+      "SR": 0.6666666666666666,
+      "DF": 0.17662906973016418,
+      "NavScore": 60.48464922611092,
+      "pairs": 3,
+      "targets": 3
+    },
+    "bWBttDxwis5grhUz": {
+      "room_type": "DINING",
+      "SR": 0.0,
+      "DF": 1.0,
+      "NavScore": -35.0,
+      "pairs": 0,
+      "targets": 0
+    }
+  },
+  "summary": {
+    "mean_nav": 59.540496893323855,
+    "std_nav": 49.76967375143618,
+    "mean_sr": 0.6765151515151515,
+    "std_sr": 0.3967679972916713,
+    "mean_df": 0.23174337880546558,
+    "std_df": 0.37434254105869463,
+    "num_rooms": 22
+  }
+}

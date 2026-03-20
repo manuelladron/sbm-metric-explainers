@@ -1,0 +1,165 @@
+{
+  "rooms": {
+    "l8EEhSTmRAhocxDh": {
+      "room_type": "KITCHEN",
+      "SR": 1.0,
+      "DF": 0.058946910823948505,
+      "NavScore": 97.9368581211618,
+      "pairs": 6,
+      "targets": 3
+    },
+    "Whr6w2Utw3piKHOv": {
+      "room_type": "GARAGE",
+      "SR": 0.5,
+      "DF": 0.11125631828624882,
+      "NavScore": 46.10602885998129,
+      "pairs": 6,
+      "targets": 2
+    },
+    "Woy1fyBW5WosVUcc": {
+      "room_type": "DINING",
+      "SR": 0.0,
+      "DF": 1.0,
+      "NavScore": -35.0,
+      "pairs": 0,
+      "targets": 0
+    },
+    "QmZjhBBDVWwYWEoU": {
+      "room_type": "MASTER_BED",
+      "SR": 0.5,
+      "DF": 0.12230279781423173,
+      "NavScore": 45.71940207650189,
+      "pairs": 10,
+      "targets": 5
+    },
+    "AhC5r2F9B5TA0OQR": {
+      "room_type": "BATHFULL",
+      "SR": 1.0,
+      "DF": 0.015643642552308268,
+      "NavScore": 99.45247251066921,
+      "pairs": 2,
+      "targets": 2
+    },
+    "jvEMVEpkkGcmoTqt": {
+      "room_type": "BEDROOM",
+      "SR": 0.5,
+      "DF": 0.06663298033839934,
+      "NavScore": 47.66784568815602,
+      "pairs": 8,
+      "targets": 4
+    },
+    "SW0wSvh8U4ym5FWw": {
+      "room_type": "DINING",
+      "SR": 0.0,
+      "DF": 1.0,
+      "NavScore": -35.0,
+      "pairs": 0,
+      "targets": 0
+    },
+    "4g7l66YkSkeRjWZA": {
+      "room_type": "GARAGE",
+      "SR": 1.0,
+      "DF": 0.09756121085585967,
+      "NavScore": 96.5853576200449,
+      "pairs": 6,
+      "targets": 2
+    },
+    "9zUflshuN0xWA0qS": {
+      "room_type": "DINING",
+      "SR": 1.0,
+      "DF": 0.12001115287093334,
+      "NavScore": 95.79960964951734,
+      "pairs": 1,
+      "targets": 1
+    },
+    "NfB3SHoC6YFUco4X": {
+      "room_type": "POWDER",
+      "SR": 1.0,
+      "DF": 0.15011621590287427,
+      "NavScore": 94.74593244339941,
+      "pairs": 1,
+      "targets": 1
+    },
+    "QlNuj18ktFhncLWG": {
+      "room_type": "BATHFULL",
+      "SR": 1.0,
+      "DF": 0.03288053515912742,
+      "NavScore": 98.84918126943055,
+      "pairs": 2,
+      "targets": 2
+    },
+    "6pf14khGgdGqdyMh": {
+      "room_type": "BATHFULL",
+      "SR": 1.0,
+      "DF": 0.012851323147627436,
+      "NavScore": 99.55020368983304,
+      "pairs": 2,
+      "targets": 2
+    },
+    "Kx9nqNs4LRBUxlLW": {
+      "room_type": "LIVING",
+      "SR": 1.0,
+      "DF": 0.11609628887589607,
+      "NavScore": 95.93662988934364,
+      "pairs": 2,
+      "targets": 2
+    },
+    "2grqU7h9DDP4WxK9": {
+      "room_type": "MASTER_BED",
+      "SR": 0.6,
+      "DF": 0.17106292090668307,
+      "NavScore": 54.01279776826608,
+      "pairs": 10,
+      "targets": 5
+    },
+    "NrkG6TQosD1DouL4": {
+      "room_type": "GARAGE",
+      "SR": 1.0,
+      "DF": 0.0041159627773813545,
+      "NavScore": 99.85594130279165,
+      "pairs": 1,
+      "targets": 1
+    },
+    "9LKcmK5ZXKUwEuP9": {
+      "room_type": "LAUNDRY",
+      "SR": 0.5,
+      "DF": 0.19351006768568368,
+      "NavScore": 43.227147631001074,
+      "pairs": 4,
+      "targets": 2
+    },
+    "ABXIugiZi3xC7Szq": {
+      "room_type": "BEDROOM",
+      "SR": 0.5,
+      "DF": 0.04089444616970839,
+      "NavScore": 48.56869438406021,
+      "pairs": 12,
+      "targets": 4
+    },
+    "j4urBOexAUuQYybm": {
+      "room_type": "KITCHEN",
+      "SR": 0.3333333333333333,
+      "DF": 0.1996350687302043,
+      "NavScore": 26.346105927776183,
+      "pairs": 3,
+      "targets": 3
+    },
+    "aRgtwAwwRs1YLUdE": {
+      "room_type": "LAUNDRY",
+      "SR": 1.0,
+      "DF": 0.08501331613310162,
+      "NavScore": 97.02453393534144,
+      "pairs": 4,
+      "targets": 2
+    }
+  },
+  "summary": {
+    "mean_nav": 64.07288119827767,
+    "std_nav": 43.46878169053639,
+    "mean_sr": 0.7070175438596491,
+    "std_sr": 0.351465880431106,
+    "mean_df": 0.18939637679106408,
+    "std_df": 0.2916053616858783,
+    "num_rooms": 19
+  }
+}
