@@ -128,6 +128,9 @@
     .card.oc .formula { color: var(--oc); }
     .card.oc .arrow { color: var(--oc); }
 
+    .card.results h2 { color: #1A7A7E; }
+    .card.results .arrow { color: #1A7A7E; }
+
     .footer-note {
       margin-top: 3.2rem;
       color: var(--muted);
@@ -181,6 +184,16 @@
           Is the geometry physically plausible? OC measures furniture collisions, blocked doorway zones, and objects that stick outside the room. It is the cleanup metric that makes bad geometry explicit, even when coverage and navigability look fine.
         </p>
         <span class="arrow">Read the explainer &rarr;</span>
+      </a>
+
+      <a class="card results" href="benchmark_results/index.html">
+        <div class="card-header">
+          <h2>Benchmark Results</h2>
+        </div>
+        <p class="description">
+          How does SBM compare to frontier LLMs, vision-language models, and domain-specific layout generators? Side-by-side results across all three metrics on 50 held-out production rooms.
+        </p>
+        <span class="arrow">View the results &rarr;</span>
       </a>
     </div>
 

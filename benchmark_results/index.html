@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBM Benchmark Results</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f6f1e8;
+    color: #1A1A2E;
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .content-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 36px 32px 48px;
+  }
+
+  .page-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #1A1A2E;
+  }
+
+  .page-subtitle {
+    font-size: 14px;
+    color: #636E72;
+    margin-bottom: 36px;
+    line-height: 1.5;
+  }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    font-size: 12px;
+    color: #636E72;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+  }
+
+  .chart-section {
+    margin-bottom: 44px;
+  }
+
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #1A1A2E;
+  }
+
+  .chart-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A2E;
+  }
+
+  .chart-direction {
+    font-size: 12px;
+    color: #636E72;
+  }
+
+  .category-divider {
+    font-size: 10px;
+    color: #9BA4A9;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    padding-left: 172px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    height: 26px;
+  }
+
+  .method-name {
+    width: 160px;
+    font-size: 12px;
+    text-align: right;
+    padding-right: 12px;
+    flex-shrink: 0;
+    color: #4A5568;
+    white-space: nowrap;
+  }
+
+  .method-name.ours {
+    font-weight: 700;
+    color: #1A7A7E;
+  }
+
+  .bar-track {
+    flex: 1;
+    background: #e8e2d8;
+    height: 18px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .bar {
+    height: 100%;
+    border-radius: 3px;
+    min-width: 2px;
+  }
+
+  .bar.ours { background: #1A7A7E; }
+  .bar.frontier { background: #94A8B3; }
+  .bar.domain { background: #C4956A; }
+
+  .bar-value {
+    width: 48px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 8px;
+    flex-shrink: 0;
+    color: #2D3436;
+  }
+
+  .bar-value.na {
+    color: #B2BEC3;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  sup {
+    font-size: 9px;
+    color: #9BA4A9;
+    font-weight: 400;
+  }
+
+  .footnote {
+    font-size: 11px;
+    color: #9BA4A9;
+    margin-top: 32px;
+    line-height: 1.6;
+    border-top: 1px solid #E8ECEF;
+    padding-top: 16px;
+  }
+</style>
+</head>
+<body>
+  <nav style="
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    background: rgba(246, 241, 232, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(19,19,19,0.06);
+    font-family: 'Avenir Next','Helvetica Neue',Helvetica,sans-serif;
+    font-size: 0.82rem; font-weight: 600;
+  ">
+    <a href="../index.html" style="color:#131313; text-decoration:none; letter-spacing:0.04em;">All Metrics</a>
+    <span style="color:#d8d0c4;">/</span>
+    <a href="../coverage_explainer/index.html" style="color:#66615b; text-decoration:none;">Coverage</a>
+    <span style="color:#d8d0c4;">|</span>
+    <a href="../navigability_explainer/index.html" style="color:#66615b; text-decoration:none;">Navigability</a>
+    <span style="color:#d8d0c4;">|</span>
+    <a href="../overlap_clearance_explainer/index.html" style="color:#66615b; text-decoration:none;">Overlap &amp; Clearance</a>
+    <span style="color:#d8d0c4;">|</span>
+    <span style="color:#1A7A7E;">Results</span>
+  </nav>
+<div class="content-wrap">
+
+<div class="page-title">Frontier AI Benchmark: Layout Quality Evaluation</div>
+<div class="page-subtitle">
+  Production SBM evaluated against frontier LLMs, vision-language models, and domain-specific layout generators on 50 held-out rooms. All methods receive the same room geometry and entity catalog.
+</div>
+
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-swatch" style="background: #1A7A7E;"></div>
+    <span>SBM (Ours)</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background: #94A8B3;"></div>
+    <span>Frontier LLMs / VLMs</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background: #C4956A;"></div>
+    <span>Domain-Specific Methods</span>
+  </div>
+</div>
+
+<!-- ==================== COVERAGE ==================== -->
+<div class="chart-section">
+  <div class="chart-header">
+    <div class="chart-title">Coverage</div>
+    <div class="chart-direction">higher is better &uarr;</div>
+  </div>
+
+  <div class="bar-row">
+    <div class="method-name ours">SBM (Ours)</div>
+    <div class="bar-track"><div class="bar ours" style="width: 98.2%;"></div></div>
+    <div class="bar-value">98.2</div>
+  </div>
+
+  <div class="category-divider">Text-Based LLMs</div>
+
+  <div class="bar-row">
+    <div class="method-name">Claude Opus 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 76.4%;"></div></div>
+    <div class="bar-value">76.4</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">GPT-5.2 <sup>&dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 76.5%;"></div></div>
+    <div class="bar-value">76.5</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Sonnet 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 74.9%;"></div></div>
+    <div class="bar-value">74.9</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Gemini 3.1 Pro <sup>&Dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 72.6%;"></div></div>
+    <div class="bar-value">72.6</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Codex 5.3</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 71.3%;"></div></div>
+    <div class="bar-value">71.3</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Haiku 4.5</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 70.8%;"></div></div>
+    <div class="bar-value">70.8</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Qwen 3.5</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 64.6%;"></div></div>
+    <div class="bar-value">64.6</div>
+  </div>
+
+  <div class="category-divider">Vision-Language Models</div>
+
+  <div class="bar-row">
+    <div class="method-name">Claude Opus 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 75.9%;"></div></div>
+    <div class="bar-value">75.9</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">GPT-5.2 <sup>&dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 76.5%;"></div></div>
+    <div class="bar-value">76.5</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Sonnet 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 74.2%;"></div></div>
+    <div class="bar-value">74.2</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Haiku 4.5</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 68.7%;"></div></div>
+    <div class="bar-value">68.7</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Qwen 3.5 <sup>&dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 62.2%;"></div></div>
+    <div class="bar-value">62.2</div>
+  </div>
+
+  <div class="category-divider">Domain-Specific</div>
+
+  <div class="bar-row">
+    <div class="method-name">FlairGPT</div>
+    <div class="bar-track"><div class="bar domain" style="width: 46.6%;"></div></div>
+    <div class="bar-value">46.6</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">LayoutVLM</div>
+    <div class="bar-track"><div class="bar domain" style="width: 0%;"></div></div>
+    <div class="bar-value na">N/A</div>
+  </div>
+</div>
+
+<!-- ==================== NAVIGABILITY ==================== -->
+<div class="chart-section">
+  <div class="chart-header">
+    <div class="chart-title">Navigability</div>
+    <div class="chart-direction">higher is better &uarr;</div>
+  </div>
+
+  <div class="bar-row">
+    <div class="method-name ours">SBM (Ours)</div>
+    <div class="bar-track"><div class="bar ours" style="width: 82.4%;"></div></div>
+    <div class="bar-value">82.4</div>
+  </div>
+
+  <div class="category-divider">Text-Based LLMs</div>
+
+  <div class="bar-row">
+    <div class="method-name">Gemini 3.1 Pro <sup>&Dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 51.9%;"></div></div>
+    <div class="bar-value">51.9</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Opus 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 45.7%;"></div></div>
+    <div class="bar-value">45.7</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">GPT-5.2 <sup>&dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 45.1%;"></div></div>
+    <div class="bar-value">45.1</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Codex 5.3</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 40.7%;"></div></div>
+    <div class="bar-value">40.7</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Haiku 4.5</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 33.8%;"></div></div>
+    <div class="bar-value">33.8</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Qwen 3.5</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 33.7%;"></div></div>
+    <div class="bar-value">33.7</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Sonnet 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 29.4%;"></div></div>
+    <div class="bar-value">29.4</div>
+  </div>
+
+  <div class="category-divider">Vision-Language Models</div>
+
+  <div class="bar-row">
+    <div class="method-name">Claude Opus 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 64.5%;"></div></div>
+    <div class="bar-value">64.5</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Sonnet 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 64.3%;"></div></div>
+    <div class="bar-value">64.3</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Qwen 3.5 <sup>&dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 64.1%;"></div></div>
+    <div class="bar-value">64.1</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">GPT-5.2 <sup>&dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 59.5%;"></div></div>
+    <div class="bar-value">59.5</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Haiku 4.5</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 38.5%;"></div></div>
+    <div class="bar-value">38.5</div>
+  </div>
+
+  <div class="category-divider">Domain-Specific</div>
+
+  <div class="bar-row">
+    <div class="method-name">LayoutVLM</div>
+    <div class="bar-track"><div class="bar domain" style="width: 40.3%;"></div></div>
+    <div class="bar-value">40.3</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">FlairGPT</div>
+    <div class="bar-track"><div class="bar domain" style="width: 28.2%;"></div></div>
+    <div class="bar-value">28.2</div>
+  </div>
+</div>
+
+<!-- ==================== GEOMETRIC VALIDITY ==================== -->
+<div class="chart-section">
+  <div class="chart-header">
+    <div class="chart-title">Geometric Validity</div>
+    <div class="chart-direction">higher is better &uarr; &nbsp;(100 &minus; Overlap &amp; Clearance violations)</div>
+  </div>
+
+  <!-- Axis label row -->
+  <div style="display:flex; align-items:center; margin-bottom:6px; height:14px;">
+    <div style="width:160px; flex-shrink:0;"></div>
+    <div style="flex:1; display:flex; justify-content:space-between; font-size:10px; color:#9BA4A9; padding: 0 2px;">
+      <span>80</span><span>85</span><span>90</span><span>95</span><span>100</span>
+    </div>
+    <div style="width:48px; flex-shrink:0;"></div>
+  </div>
+
+  <div class="bar-row">
+    <div class="method-name ours">SBM (Ours)</div>
+    <div class="bar-track"><div class="bar ours" style="width: 84%;"></div></div>
+    <div class="bar-value">96.8</div>
+  </div>
+
+  <div class="category-divider">Text-Based LLMs</div>
+
+  <div class="bar-row">
+    <div class="method-name">Codex 5.3</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 70%;"></div></div>
+    <div class="bar-value">94.0</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Gemini 3.1 Pro <sup>&Dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 63.5%;"></div></div>
+    <div class="bar-value">92.7</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Opus 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 63%;"></div></div>
+    <div class="bar-value">92.6</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Sonnet 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 60.5%;"></div></div>
+    <div class="bar-value">92.1</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">GPT-5.2 <sup>&dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 45.5%;"></div></div>
+    <div class="bar-value">89.1</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Qwen 3.5</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 45.5%;"></div></div>
+    <div class="bar-value">89.1</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Haiku 4.5</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 28.5%;"></div></div>
+    <div class="bar-value">85.7</div>
+  </div>
+
+  <div class="category-divider">Vision-Language Models</div>
+
+  <div class="bar-row">
+    <div class="method-name">Claude Opus 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 55.5%;"></div></div>
+    <div class="bar-value">91.1</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">GPT-5.2 <sup>&dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 43.5%;"></div></div>
+    <div class="bar-value">88.7</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Sonnet 4.6</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 40%;"></div></div>
+    <div class="bar-value">88.0</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Qwen 3.5 <sup>&dagger;</sup></div>
+    <div class="bar-track"><div class="bar frontier" style="width: 16.5%;"></div></div>
+    <div class="bar-value">83.3</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">Claude Haiku 4.5</div>
+    <div class="bar-track"><div class="bar frontier" style="width: 15.5%;"></div></div>
+    <div class="bar-value">83.1</div>
+  </div>
+
+  <div class="category-divider">Domain-Specific</div>
+
+  <div class="bar-row">
+    <div class="method-name">LayoutVLM</div>
+    <div class="bar-track"><div class="bar domain" style="width: 75.5%;"></div></div>
+    <div class="bar-value">95.1</div>
+  </div>
+  <div class="bar-row">
+    <div class="method-name">FlairGPT</div>
+    <div class="bar-track"><div class="bar domain" style="width: 75%;"></div></div>
+    <div class="bar-value">95.0</div>
+  </div>
+</div>
+
+<div class="footnote">
+  <strong>Evaluation protocol:</strong> 50 held-out production rooms. All methods receive the same unguided prompt with room geometry and entity catalog. VLMs additionally receive a 1024&times;1024 floorplan rendering. LayoutVLM requires an input furniture list, so Coverage is not applicable. Geometric Validity = 100 &minus; OC (Overlap &amp; Clearance violations %).
+  <br><br>
+  <sup>&dagger;</sup> Evaluated on a subset of rooms due to low parse success rate (&lt;70%).
+  <sup>&Dagger;</sup> Evaluated on 37/50 rooms.
+</div>
+
+</div>
+</body>
+</html>
